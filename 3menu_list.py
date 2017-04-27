@@ -53,29 +53,34 @@ info = {
         ]
     }
 }
-for i in info:
-    print(i)
 while True:
+    for i in info:
+        print(i)
     choice = input("选择进入第一层，输入q退出：")
     if choice in info:
-        for i2 in info[choice]:
-            print(i2)
+
         while True:
-            choice2 = input("选择进入第二层，输入q退出：")
+            for i2 in info[choice]:
+                print(i2)
+            choice2 = input("选择进入第二层，输入q退出，输入b返回上一级：")
             if choice2 in info[choice]:
-                for i3 in info[choice][choice2]:
-                    print(i3)
                 while True:
-                    choice3 = input("选择进入第三层，输入q退出：")
+                    for i3 in info[choice][choice2]:
+                        print(i3)
+                    choice3 = input("选择进入第三层，输入q退出，输入b返回上一级：")
                     if choice3 in info[choice][choice2]:
                         print("选择结束")
                         exit()
                     elif choice3 == "q":
                         exit()
+                    elif choice3 == "b":
+                        break
                     else:
                         print("选项不存在，请重新输入：")
             elif choice2 == "q":
                 exit()
+            elif choice2 == "b":
+                break
             else:
                 print("选项不存在，请重新输入：")
     elif choice == "q":
